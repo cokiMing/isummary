@@ -76,6 +76,10 @@
 
 5. 双亲委派模型
 
+   * 当类加载器加载类的时候，首先会将该类委托给父类进行加载，如果父类加载不了，再由自己进行加载。这样的好处是可以保证jvm中的类不被外部的同名类侵染，有利于虚拟机安全。
+   * jdk提供了三种类加载器，BootstrapClassLoader，ExtentionClassLoader，AppClassLoader。前两种类加载器分别用于加载jvm基础类和扩展类，第三种才是用于加载用户定义的类。
+   * 双亲委派模型的破坏：tomcat破坏了双亲委派模型：1. 为了加载多版本的相同类；2. 为了jsp的热插拔。一般的破坏实现方式是在Thread中设置自定义的contextClassLoader。
+
 6. 当执行 ``` Test test = new Test() ``` 的时候，发生了什么？
 
    * 首先jvm会去查找Test类是否已经加载，如果没有则加载Test类
@@ -141,6 +145,7 @@
 9. SpringCloud的网关
 10. SpringCloud的熔断器
 11. Dubbo相关知识
+    * Dubbo的服务调用依赖于底层的RpcProxy，默认使用netty，性能高于基于Http调用的SpringCloud。
 
 
 
