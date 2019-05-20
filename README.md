@@ -42,6 +42,9 @@
 
 8. redis的持久化方式
 
+   * aof 通过记录操作日志来进行持久化
+   * rdb 通过直接记录缓存中的数据来进行持久化
+
 9. LRU算法
 
 10. 数据库与缓存双写一致性
@@ -77,6 +80,8 @@
 4. 慢查询优化
 
 5. mvcc
+
+   事务链表
 
 6. 数据库的三大范式
 
@@ -177,13 +182,17 @@
 
 1. HashMap的原理
 
-2. JUC相关容器
+2. JUC相关工具
 
    1. ConcurrentHashMap
 
       1.7中使用segment分段锁。每个segment都持有一部分bucket，在初始化的时候可以指定segment的数量，但是之后不支持segment数组扩容。ConcurrentHashMap的扩容就是对segment内部的bucket进行扩容，每次扩大一倍。
 
       1.8中使用Entry为锁，扩容时采用多段多线程分别扩容（也有可能最终执行扩容的是同一个线程）的方法（transfer）。
+
+   2. CountDownLatch
+
+      这是一个异步转同步的工具，通过一个总的任务计数递减来控制异步转同步的时机。
 
 3. List，Set
 
@@ -241,14 +250,20 @@
 1. Spring的生命周期
 2. Spring的核心，IOC和AOP
 3. Spring用到的设计模式
-4. Springboot和Spring的对比
-5. Springboot的内置web容器
-6. Springboot的思想：约定大于配置
-7. SpringCloud的注册中心
-8. SpringCloud的配置中心
-9. SpringCloud的网关
-10. SpringCloud的熔断器
-11. Dubbo相关知识
+   * 单例模式
+   * 抽象工厂
+   * 样板方法
+   * 观察者模式
+   * 代理模式
+4. Spring是如何解决循环引用的 ？
+5. Springboot和Spring的对比
+6. Springboot的内置web容器
+7. Springboot的思想：约定大于配置
+8. SpringCloud的注册中心
+9. SpringCloud的配置中心
+10. SpringCloud的网关
+11. SpringCloud的熔断器
+12. Dubbo相关知识
     * Dubbo的服务调用依赖于底层的RpcProxy，默认使用netty，性能高于基于Http调用的SpringCloud。
     * Dubbo的十层架构：
       1. service：由用户实现的接口层
