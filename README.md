@@ -56,6 +56,11 @@
 
 1. 网关的使用场景
 2. 网关设计需要考虑的因素
+   * 负载均衡
+   * 限流
+   * 黑名单
+   * 路由
+   * 监控
 
 
 
@@ -265,6 +270,7 @@
 11. SpringCloud的熔断器
 12. Dubbo相关知识
     * Dubbo的服务调用依赖于底层的RpcProxy，默认使用netty，性能高于基于Http调用的SpringCloud。
+
     * Dubbo的十层架构：
       1. service：由用户实现的接口层
       2. config：Provider和Consumer的配置
@@ -277,7 +283,17 @@
       9. transport：抽象mina和netty为统一接口，以Message为中心
       10. serialize：封装序列化的方式
 
+    * Dubbo的服务治理：
 
+      1. 服务调用链路
+      2. 服务降级
+      3. 服务鉴权
+      4. 服务监控
+      5. 服务的超时重试
+
+    * Dubbo的SPI扩展
+
+      实现Dubbo提供的SPI接口后，打成jar包，放到META-INF/services/下面并配置key=com.xxx.xxx.xxx，在调用代码中配置相关的key，即可实现Dubbo的SPI扩展
 
 **分布式相关**
 
