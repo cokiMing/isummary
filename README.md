@@ -138,7 +138,7 @@
 
 10. 如何实现数据查询时加锁
 
-   在SELECT语句中添加FOR UPDATE，即给需要读取的数据添加排他锁，等待更新事务完成后读取其最新内容。
+    * 在SELECT语句中添加FOR UPDATE，即给需要读取的数据添加排他锁，等待更新事务完成后读取其最新内容。
 
 11. 事务的隔离级别
 
@@ -315,6 +315,8 @@
 
 11. volatile关键字的底层实现
 
+    强制线程在读取volatile修饰的变量的时候从主内存读取，happen-before，内存屏障。
+
 12. ThreadLocal类的使用与原理
 
 13. HashMap在并发环境下可能会出现什么问题
@@ -440,6 +442,8 @@
 6. Paxos算法
 
     使用奇数个节点的acceptor，即使有多个coordinate，也可以通过多出来的acceptor通过提议。假如两个coordinate的acceptor相同，那么比较他们的贿选数值大小即可。
+
+7. raft算法
 
 
 
